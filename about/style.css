@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Univers 93';
+    src: url(Univers\ LT\ Std\ 93\ Extra\ Black\ Extended.otf);
+}
+
+@font-face {
+    font-family: 'Univers 73';
+    src: url(Univers\ LT\ Std\ 73\ Black\ Extended.otf);
+}
+
+body {
+    height: 150vh;
+}
+
+h3 {
+    font-family: 'Univers 73';
+}
+
+#mainBody {
+    text-align: center;
+    font-weight: 0;
+    font-size: 1.15vw;
+    letter-spacing: 0.15vw;
+    line-height: 1;
+}
+
+#descContainer {
+    width: 46.7vw;
+    margin-left: 24vw;
+    margin-top: 28vh;
+    display: flex;
+    align-content: center;
+}
+
+.atomLogo {
+    width: 4.5vw;
+    margin-left: 47vw;
+    margin-bottom: 1vh;
+}
+
+#detailsFooter {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0vw;
+    margin-top: 20vh;
+}
+
+#detailsFooter > h3 {
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    font-weight: 0;
+    font-size: 1.2vw;
+    letter-spacing: 0.15vw;
+}
+
+#detailsFooter > #atom {
+    width: 8.3vw;
+    margin-left: 45vw;
+    margin-top: 13vh;
+}

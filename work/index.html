@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WORK</title>
+    <script defer type="text/javascript" src="homepatch.js" async></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta itemprop="image" content="screenshot.png">
+</head>
+
+<body>
+    <div id="overlay"></div>
+    <div id="index">
+        <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+        <div id="workMenuDiv">
+            <a href="#" id="work1" class="menuAnch"><h3 class="workItem">1_ ALPHA[BETA]</h3></a>
+            <a href="#" id="work2" class="menuAnch"><h3 class="workItem">2_ ACTION POTENTIAL</h3></a>
+            <a href="#" id="work3" class="menuAnch"><h3 class="workItem">3_ TRANSPARENT THESIS</h3></a>
+            <a href="#" id="work4" class="menuAnch"><h3 class="workItem">4_ FABRICATION//INSTALLATION</h3></a>
+        </div>
+    </div>
+
+    <div id="content">
+
+    </div>
+
+    <button id="playPause">Play</button>
+    
+    <script>
+        let audioURL = 'Ich Bin Meine Maschine (Ennio Skoto Edit).mp3'; // Relative path to your audio file
+        let audioContext;
+        let gainNode;
+        let audio;
+        let isPlaying = false;
+
+        function initializeAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioContext.createGain();
+                gainNode.connect(audioContext.destination);
+            }
+        }
+
+        function playAudio() {
+            initializeAudio();
+            if (!audio) {
+                audio = new Audio(audioURL);
+                const source = audioContext.createMediaElementSource(audio);
+                source.connect(gainNode);
+            }
+            audio.play().then(() => {
+                console.log("Audio is playing");
+                isPlaying = true;
+                updateButtonLabel();
+            }).catch((error) => {
+                console.error("Error playing audio:", error);
+            });
+        }
+
+        function pauseAudio() {
+            if (audio) {
+                audio.pause();
+                isPlaying = false;
+                updateButtonLabel();
+            }
+        }
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                pauseAudio();
+            } else {
+                playAudio();
+            }
+        }
+
+        function updateButtonLabel() {
+            const playButton = document.getElementById('playPause');
+            playButton.textContent = isPlaying ? 'Pause' : 'Play';
+        }
+
+        const playButton = document.getElementById('playPause');
+        playButton.addEventListener('click', togglePlayPause);
+    </script>
+</body>
+</html>
