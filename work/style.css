@@ -3,14 +3,67 @@
     src: url(Univers\ LT\ Std\ 93\ Extra\ Black\ Extended.otf);
 }
 
+@font-face {
+    font-family: 'Univers 73';
+    src: url(Univers\ LT\ Std\ 73\ Black\ Extended.otf);
+}
+
+.bodyText {
+    font-family: 'Univers 73';
+    color: #000;
+    font-size: 0.74vw;
+    letter-spacing: 0.13vw;
+}
+
+
+
+/* @keyframes flashAnimation {
+    0% {
+        color: #ffffff;
+    }
+
+    70% {
+        color: #16FF00;
+    }
+
+    100% {
+        filter: invert(0%);
+        color: #000;
+    }
+} */
+
+/* @keyframes flashAnimationOverlay {
+    0% {
+        backdrop-filter: invert(100%);
+    }
+
+    50% {
+        backdrop-filter: invert(100%);
+    }
+
+    100% {
+        backdrop-filter: invert(0%);
+    }
+} */
+
+
+.flash-text {
+    animation: flashAnimation 1s linear;
+}
+
+.flash-overlay {
+    animation: flashAnimationOverlay 10s linear;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: #ffffff;
     color: #fff;
     overflow: hidden;
+    overflow-x: hidden;
     /* disable scrolling / rubberband effect on mobile */
-    height: 100vh;
+    height: max-content;
 }
 
 #playPause {
@@ -29,8 +82,10 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
     background-color: white;
     opacity: 0;
     /* Initially transparent */
@@ -73,6 +128,11 @@ canvas {
     height: 100vh;
 }
 
+#index {
+    overflow: hidden;
+    /* Set overflow to hidden by default */
+}
+
 #work1png {
     width: 100vw;
     height: 100vh;
@@ -109,28 +169,415 @@ h3 {
     width: auto;
 }
 
+.titleBarAlign {
+    margin: 0;
+    margin-top: 4vh;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
 a {
     text-decoration: none;
     color: black;
     display: inline-block;
 }
 
-#nextButton1 {
+#nextButton1, #backButton1 {
     margin: 0;
     padding: 0;
-    display: inline;
+    height: 0;
+    width: 0;
+    /* display: inline;*/
     position: absolute;
-    margin-left: 72vw;
+    /* margin-left: 72vw;
     margin-top: 7.6vh;
     width: 25vw;
-    height: 4vh;
+    height: 4vh; */
 }
 
-h3:hover {
+.page1next {
+        margin-top: 5vh;
+}
+
+#nextButton2Div, #nextButton3Div {
+    margin-left: 30vw;
+    position: absolute;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: max-content;
+    height: max-content;
+}
+
+#nextButton2 > h3,
+#nextButton3 > h3 {
+    font-size: 1.3vw;
+}
+
+#actionTitle {
+    margin-left: 6vw;
+    font-size: 1.8vw;
+    letter-spacing: 0.3vw;
+}
+
+
+.textBtn:hover, .menuAnch:hover {
     color: #16FF00;
 }
 
 .menuAnch {
     margin: 0;
     width: 0;
+}
+
+#alphabetaTitle {
+    width: 80vw;
+    z-index: 0;
+    position: absolute;
+}
+
+.hiddenElem {
+    display: none;
+}
+
+#backButton1 {
+    margin-top: 6.2vh;
+}
+
+#backButton1>h3 {
+    font-size: 0.8vw;
+    letter-spacing: 0.1vw;
+    margin-left: 73vw;
+}
+
+
+#nextButton1 > h3 {
+    font-size: 1.7vw;
+    letter-spacing: 0.1vw;
+    margin-left: 75vw;
+}
+
+#contentContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    margin-top: 30vh;
+    margin-right: 10vw;
+    margin-left: 54vw;
+    height: 123vh;
+}
+
+#contentContainer>iframe {
+    width: 100%;
+    height: 100%;
+    /* Assuming 4:3 aspect ratio, 0.75 is the aspect ratio */
+}
+
+#contentContainer > * {
+    margin-bottom: 3vh;
+    height: 100vh;
+}
+
+#titleElement {
+    position: sticky;
+    display: inline-flex;
+    align-items: center;
+    top: 0;
+    /* Stick to the top of the viewport */
+    z-index: 1;
+    /* Ensure it's above other content */
+}
+
+#titleElement2 {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    top: -7vh;
+    left: 3cap;
+    /* Stick to the top of the viewport */
+    z-index: 1;
+    /* Ensure it's above other content */
+}
+
+#titleElement3 {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    top: 5vh;
+    left: 8vw;
+    /* Stick to the top of the viewport */
+    z-index: 1;
+    /* Ensure it's above other content */
+}
+
+#titleElement3 > img {
+    width: 50vw;
+}
+
+#splatWidget {
+    position: absolute;
+    width: 17vw;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    top: -15vh;
+    /* Adjust vertical position as needed */
+    left: -20px;
+    /* Adjust horizontal position as needed */
+    z-index: -1;
+    /* Ensure it's above other content */
+    opacity: 1;
+    /* Adjust opacity as needed */
+    /* pointer-events: none; */
+    object-fit: cover;
+}
+
+#splatWidget:hover {
+    opacity: 1;
+    /* Increase opacity on hover */
+    /* Show pointer cursor on hover */
+}
+
+#ichbinImg {
+    width: 25vw;
+    position: absolute;
+    top: -130%;
+    /* Stick to the top of the #titleElement */
+    left: 7vw;
+    /* Adjust this value as needed */
+    transform: rotate(-7deg);
+    /* Adjust this value as needed */
+    pointer-events: none;
+    
+}
+
+#titleElement > h3 {
+    position: sticky;
+    pointer-events: none;
+    backdrop-filter: drop-shadow(0 0 100px rgba(255, 255, 255, 1));
+}
+
+
+#actionContentGrid > span > img {
+    width: 30vw;
+}
+
+#actionContentGrid {
+    display: grid;
+    width: 85vw;
+    margin-left: 8vw;
+    margin-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three columns with equal width */
+    grid-auto-rows: auto;
+    /* Automatically adjust row height based on content */
+    grid-gap: 20px;
+    /* Gap between grid items */
+    z-index: 99;
+}
+
+#actionContentGrid>p {
+    grid-column: 3;
+    /* Span two columns */
+    font-size: 0.9vw;
+    margin: 0;
+}
+
+#actionContentGrid > span {
+    height: auto;
+    grid-row: span 1;
+    /* Span two rows */
+}
+
+.bodyText {
+    grid-column: 3;
+    /* Third column */
+    grid-row: 1 / span 2;
+    /* First row */
+    align-self: start;
+}
+
+#actionContentGrid>span>#cutspec {
+    width: 15vw;
+    object-fit: cover;
+    object-position: 20% 100%;
+    /* Set the width to 15% of the viewport width */
+    margin-left: 15.25vw;
+}
+
+#ytplayer {
+    width: 97.3%;
+    /* Set the width to 80% of the parent container */
+    height: 87%
+    /* Calculate the height based on a 4:3 aspect ratio */
+}
+
+#ferroPlayerDiv {
+    position: absolute;
+    margin-left: 23.4vw;
+}
+
+#ytplayer2 {
+    width: 262%;
+}
+
+.noItalic {
+    font-family: 'Univers 73';
+    font-style: normal;
+    font-weight: lighter;
+}
+
+.transparentTitle {
+    letter-spacing: 0.1vw;
+    color: #16FF00;
+    font-size: 4.5vw;
+}
+
+#contentArea {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+}
+
+.subTitle {
+    position: absolute;
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+
+.subTitle > img {
+    width: 27vw;
+}
+
+#textImgContainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: -15%;
+}
+
+.textImgItem > img {
+    width: 40vw;
+}
+
+.contentGrid1 {
+    width: 100vw;
+    /* Set a fixed width for the grid */
+    margin-left: 9.3vw;
+    margin-right: auto;
+    /* Center the grid on the page */
+    margin-top: 30vh;
+    margin-bottom: -300px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    /* Adjusted column widths */
+    grid-template-rows: 40% 60%;
+    /* Adjusted row heights */
+    gap: 20px;
+}
+
+.contentGrid2 {
+    width: 90vw;
+    margin-left: 3.3vw;
+    margin-right: auto;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Let rows adjust dynamically based on content */
+    gap: 20px;
+}
+
+.contentGrid3 {
+    width: 100vw;
+    /* Set a fixed width for the grid */
+    margin-left: 12vw;
+    margin-right: auto;
+    /* Center the grid on the page */
+    margin-top: 10vh;
+    margin-bottom: -300px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    /* Adjusted column widths */
+    grid-template-rows: 40% 60%;
+    /* Adjusted row heights */
+    gap: 20px;
+}
+
+.contentGrid1>*, .contentGrid2>*, .contentGrid3>* {
+    width: 100%;
+}
+
+.grid1Item > p {
+    margin-top: 0vh;
+    font-size: 0.9vw;
+}
+
+.grid1Item, .grid3Item {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -5vh;
+    margin-right: 3vw;
+}
+
+.grid2Item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align items in the left column to the right */
+    margin-bottom: -17vh;
+    /* Adjust spacing between grid items */
+}
+
+.grid1Item img, .grid3Item img {
+    max-width: 110%;
+    max-height: 90%;
+    /* Set a maximum width for the images */
+    height: auto;
+}
+
+.grid2Item img {
+    max-width: 70%;
+    max-height: 70%;
+    /* Set a maximum width for the images */
+    height: auto;
+}
+
+#grid4 {
+    width: 43vw;
+    margin-left: 2.1vw;
+}
+
+#grid13 {
+    margin-left: 60%;
+}
+
+#grid3, #grid4 {
+    margin-bottom: 10vh;
+}
+
+.grid2Item:nth-child(odd) {
+    justify-content: flex-end;
+    /* Align items in the right column to the left */
+}
+
+.grid2Item:nth-child(even) {
+    justify-content: flex-start;
+    /* Align items in the right column to the left */
+}
+
+#grids {
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    width: 100vw;
+    justify-content: space-between;
 }

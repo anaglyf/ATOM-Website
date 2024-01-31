@@ -1,4 +1,85 @@
 <body>
-    <a id="nextButton1" href="#"></a>
-    <img src="work2capture.png" alt="">
+    <div data-page="2" class="hiddenElem">2</div>
+    <div class="titleBarAlign">
+        <div id="titleElement">
+            <video id="splatWidget" src="actionImgs/square splat for web.mp4" loop muted></video>
+            <h3 id="actionTitle">ACTION POTENTIAL</h3>
+            <img id="ichbinImg" src="ichbin.png" alt="">
+        </div>
+        
+        <div id="nextButton2Div">
+            <a id="nextButton1" href="">
+                <h3 class="textBtn">NEXT PROJECT>>></h3>
+            </a>
+        </div>
+        <a id="backButton1" class="page1back" href="">
+            <h3 class="textBtn"> &lt;&lt;&lt;PREVIOUS PROJECT</h3>
+        </a>
+    </div>
+    
+
+    <div id="actionContentGrid">
+        <span>
+            <img src="actionImgs/GR2A1634.jpg" alt="">
+        </span>
+        <span>
+            <img src="actionImgs/GR2A1633.jpg" alt="">
+        </span>
+        <span>
+            <img id="cutspec" src="actionImgs/Waterjet cutting spec (1) copy.png" alt="">
+        </span>
+        <span id="playerDiv"> 
+            <iframe id="ytplayer" width="227" height="195" src="https://www.youtube.com/embed/L6POKRVonNk?&autoplay=1&loop=1&mute=0&playlist=L6POKRVonNk" title="action potential"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+                
+        </span>
+        <p class="bodyText">
+            “ACTION POTENTIAL” TAKES THE WORKFLOW I DEVELOPED IN ALPHA[BETA]FOR CONTROLLING DIGITAL SYSTEMS WITH REALTIME EEG DATA
+            AND APPLIES IT TO A PHYSICAL DEVICE, OUTSIDE OF THE SCREEN. IT IS AN AMAZING EXPERIENCE TO BE ABLE TO DELIBERATELY MOVE
+            AN OBJECT IN DIGITAL SPACE, AND I AM INTERESTED IN HOW MUCH MORE POWERFUL IT MIGHT BE TO CONTROL SOMETHING PHYSICAL AND
+            “REAL”. AWARE OF FERROFLUID FROM A YOUNG AGE (I WAS ALWAYS FASCINATED BY MAGNETS AS A CHILD) I DECIDED TO BUILD A DEVICE
+            THAT WOULD ALLOW ME TO CONTROL A GRID OF ELECTROMAGNETS, TREATING EACH MAGNET AS A PIXEL. A TANK OF FERROFLUID IS PLACED
+            UPON THE GRID. WHEN ACTIVATED BY THE INCOMING EEG COMMANDS DELIBERATELY SENT BY PARTICIPANTS, SHAPES, MOVEMENTS AND
+            BEHAVIOURS ARE FORMED WITHIN THE FERROFLUID.
+        </p>
+    </div>
+
+    <div id="ferroPlayerDiv">
+        <iframe id="ytplayer2" width="716" height="443" src="https://www.youtube.com/embed/1vTM9Ly7w9g?&autoplay=1&loop=1&mute=0&playlist=1vTM9Ly7w9g" title="FINAL FERRO 1" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function loadScript() {
+            console.log("Hello world!");
+
+            const splatWidget = document.getElementById('splatWidget');
+            console.log(splatWidget); // Log the value of splatWidget to the console
+
+            // Ensure that the element is found before attempting to pause it
+            if (splatWidget) {
+                // Pause the video by default
+                splatWidget.pause();
+
+                // Play the video on click
+                splatWidget.addEventListener('mouseover', function () {
+                    splatWidget.play();
+                });
+
+                // Pause the video when the mouse leaves the element
+                splatWidget.addEventListener('mouseout', function () {
+                    splatWidget.pause();
+                });
+            } else {
+                console.error('Element with ID "splatWidget" not found.');
+            }
+        }
+
+        // Call the loadScript function after 1 second
+        setTimeout(loadScript, 1000);
+    </script>
+
 </body>

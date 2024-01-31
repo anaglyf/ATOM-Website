@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
     <meta itemprop="image" content="screenshot.png">
+    <script defer src="https://www.youtube.com/iframe_api"></script>
 </head>
 
 <body>
@@ -16,10 +17,10 @@
     <div id="index">
         <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
         <div id="workMenuDiv">
-            <a href="#" id="work1" class="menuAnch"><h3 class="workItem">1_ ALPHA[BETA]</h3></a>
-            <a href="#" id="work2" class="menuAnch"><h3 class="workItem">2_ ACTION POTENTIAL</h3></a>
-            <a href="#" id="work3" class="menuAnch"><h3 class="workItem">3_ TRANSPARENT THESIS</h3></a>
-            <a href="#" id="work4" class="menuAnch"><h3 class="workItem">4_ FABRICATION//INSTALLATION</h3></a>
+            <a href="#" id="work1" class="menuAnch textBtn"><h3 class="workItem textBtn">1_ ALPHA[BETA]</h3></a>
+            <a href="#" id="work2" class="menuAnch textBtn"><h3 class="workItem textBtn">2_ ACTION POTENTIAL</h3></a>
+            <a href="#" id="work3" class="menuAnch textBtn"><h3 class="workItem textBtn">3_ TRANSPARENT THESIS</h3></a>
+            <a href="#" id="work4" class="menuAnch textBtn"><h3 class="workItem textBtn">4_ FABRICATION//INSTALLATION</h3></a>
         </div>
     </div>
 
@@ -55,6 +56,7 @@
                 console.log("Audio is playing");
                 isPlaying = true;
                 updateButtonLabel();
+                updateIframeMute(true); // Mute all iframes when audio starts playing
             }).catch((error) => {
                 console.error("Error playing audio:", error);
             });
@@ -81,8 +83,20 @@
             playButton.textContent = isPlaying ? 'Pause' : 'Play';
         }
 
+        function updateIframeMute(muted) {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                const src = iframe.getAttribute('src');
+                if (src && src.includes('mute=0')) {
+                    const newSrc = src.replace('mute=0', 'mute=1');
+                    iframe.setAttribute('src', newSrc);
+                }
+            });
+        }
+
         const playButton = document.getElementById('playPause');
         playButton.addEventListener('click', togglePlayPause);
     </script>
+
 </body>
 </html>
