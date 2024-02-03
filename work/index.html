@@ -14,21 +14,59 @@
 
 <body>
     <div id="overlay"></div>
+
+    <div class="navbar">
+        <a id="homeButton" href="../index.html">
+            <img src="../atom-logo.png" id="atomLogoNav" alt="">
+        </a>
+        <!-- <a href="../work/index.html">WORK</a>
+        <a href="../about/about.html">ABOUT</a>
+        <a href="../archive.html">ARCHIVE</a> -->
+    </div>
+
+    
+
     <div id="index">
         <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+
+        <div class="itemsContainer">
+            <img id="logoMain" src="../atom-logo.png" alt="">
+            <div id="menuDiv">
+                <a id="work1Main" class="menuAnch" href="">
+                    <h2 class="menuItem">Work</h2>
+                </a>
+                <a class="menuAnch" href="../about/about.html">
+                    <h2 class="menuItem">About</h2>
+                </a>
+                <a class="menuAnch" href="../archive/">
+                    <h2 class="menuItem">Archive</h2>
+                </a>
+        
+            </div>
+        </div>
+
         <div id="workMenuDiv">
-            <a href="#" id="work1" class="menuAnch textBtn"><h3 class="workItem textBtn">1_ ALPHA[BETA]</h3></a>
-            <a href="#" id="work2" class="menuAnch textBtn"><h3 class="workItem textBtn">2_ ACTION POTENTIAL</h3></a>
-            <a href="#" id="work3" class="menuAnch textBtn"><h3 class="workItem textBtn">3_ TRANSPARENT THESIS</h3></a>
-            <a href="#" id="work4" class="menuAnch textBtn"><h3 class="workItem textBtn">4_ FABRICATION//INSTALLATION</h3></a>
+            <a href="#" id="work1" class="hideBtn menuAnch textBtn"><h3 class="workItem textBtn">1_ ALPHA[BETA]</h3></a>
+            <a href="#" id="work2" class="hideBtn menuAnch textBtn"><h3 class="workItem textBtn">2_ ACTION POTENTIAL</h3></a>
+            <a href="#" id="work3" class="hideBtn menuAnch textBtn"><h3 class="workItem textBtn">3_ TRANSPARENT THESIS</h3></a>
+            <a href="#" id="work4" class="hideBtn menuAnch textBtn"><h3 class="workItem textBtn">4_ FABRICATION//INSTALLATION</h3></a>
         </div>
     </div>
+
+    
 
     <div id="content">
 
     </div>
-
-    <button id="playPause">Play</button>
+    <div class="audioControls">
+        <button id="playPause">
+            <img id="playPauseImg" src="icons/play.png" alt="Play">
+        </button>
+        
+        <button id="stop">
+            <img src="icons/stop.png" alt="Stop">
+        </button>
+    </div>
     
     <script>
         let audioURL = 'Ich Bin Meine Maschine (Ennio Skoto Edit).mp3'; // Relative path to your audio file
@@ -70,6 +108,15 @@
             }
         }
 
+        function stopAudio() {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+                isPlaying = false;
+                updateButtonLabel();
+            }
+        }
+
         function togglePlayPause() {
             if (isPlaying) {
                 pauseAudio();
@@ -79,8 +126,8 @@
         }
 
         function updateButtonLabel() {
-            const playButton = document.getElementById('playPause');
-            playButton.textContent = isPlaying ? 'Pause' : 'Play';
+            const playPauseImg = document.getElementById('playPauseImg');
+            playPauseImg.src = isPlaying ? 'icons/pause (3).png' : 'icons/play.png';
         }
 
         function updateIframeMute(muted) {
@@ -96,6 +143,9 @@
 
         const playButton = document.getElementById('playPause');
         playButton.addEventListener('click', togglePlayPause);
+
+        const stopButton = document.getElementById('stop');
+        stopButton.addEventListener('click', stopAudio);
     </script>
 
 </body>

@@ -34,7 +34,7 @@ function loadScript() {
         } else {
             console.error('Element with ID "splatWidget" not found.');
         }
-    }, 700);}
+    }, 500);}
 
     document.addEventListener("DOMContentLoaded", function () {
         // Initially hide the content div
@@ -57,6 +57,38 @@ function loadScript() {
             "onPatchLoaded": patchInitialized,
             "onFinishedLoading": patchFinishedLoading,
             "canvas": { "alpha": true, "premultipliedAlpha": true } // make canvas transparent
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const work1 = document.getElementById("work1Main");
+        const itemsContainer = document.querySelector(".itemsContainer");
+        const workMenuDiv = document.getElementById("workMenuDiv");
+
+        work1.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor tag
+
+            // Animate the itemsContainer to swipe left and off the screen quickly
+            itemsContainer.style.animation = "swipeLeft 0.5s forwards";
+
+            setTimeout(() => {
+                // Animate each workItem to go from fully transparent to fully opaque sequentially
+                const workItems = document.querySelectorAll(".menuAnch");
+                workMenuDiv.style.display = "inline-flex";
+                workItems.forEach((item, index) => {
+                    // Uniform delay between each item
+                    const delay = index * 80; // Adjust the delay as needed (200ms here)
+                    
+                    setTimeout(() => {
+                        console.log("hi")
+                        item.classList.remove("hideBtn");
+                        item.style.animation = `fade-in 0.5s forwards`;
+                    }, delay);
+                });
+
+                // Set display type of workMenuDiv to inline-flex
+                
+            }, 10); // 100ms timeout after the first animation
         });
     });
 
@@ -96,7 +128,7 @@ function loadScript() {
         // Function to load the previous page
         function loadPreviousPage() {
             const currentPageIndex = getCurrentPageIndex();
-            const previousPageIndex = currentPageIndex === 1 ? 4 : currentPageIndex - 1; // If on page 1, loop back to page 4
+            const previousPageIndex = currentPageIndex - 1;
 
             loadContent('work' + previousPageIndex);
         }
@@ -128,8 +160,9 @@ function loadScript() {
 
                         document.getElementById('backButton1').addEventListener('click', function (event) {
                             event.preventDefault();
-                            loadAnother(currentPageIndex - 2);
+                            loadPreviousPage();
                             loadWidget();
+                            console.log("Tried to add back button event")
                         });
                         
                     })
@@ -148,11 +181,11 @@ function loadScript() {
             setTimeout(function () {
                 fetch('work' + nextPageIndex + '.html')
                     .then(response => {
-                        if (!response.ok) {
-                            // If the next page is not found, default back to work1
-                            currentPageIndex = 1;
-                            return fetch('work1.html');
-                        }
+                        // if (!response.ok) {
+                        //     // If the next page is not found, default back to work1
+                        //     currentPageIndex = 1;
+                        //     return fetch('work1.html');
+                        // }
                         return response.text();
                     })
                     .then(html => {
@@ -167,18 +200,20 @@ function loadScript() {
                             event.preventDefault();
                             loadNextPage();
                             loadWidget();
+                            console.log("Tried to add next button event")
                         });
 
                         document.getElementById('backButton1').addEventListener('click', function (event) {
                             event.preventDefault();
                             loadPreviousPage();
                             loadWidget();
+                            console.log("Tried to add back button event")
                         });
 
                         
                     })
                     .catch(error => console.log(error));
-            }, 500);
+            }, 600);
         }
 
 

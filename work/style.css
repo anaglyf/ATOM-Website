@@ -8,6 +8,11 @@
     src: url(Univers\ LT\ Std\ 73\ Black\ Extended.otf);
 }
 
+@font-face {
+    font-family: 'Silkscreen';
+    src: url(../Silkscreen-Regular.ttf);
+}
+
 .bodyText {
     font-family: 'Univers 73';
     color: #000;
@@ -15,6 +20,87 @@
     letter-spacing: 0.13vw;
 }
 
+@media screen and (max-width: 768px) {
+    /* Adjust contentGrid1 for mobile */
+    .contentGrid1,
+    .contentGrid3 {
+        width: 90%;
+        margin-left: 5%;
+        grid-template-columns: 100%;
+        /* Set the grid to have a single column */
+        grid-template-rows: auto;
+        /* Let rows adjust dynamically based on content */
+    }
+
+    /* Adjust contentGrid2 for mobile */
+    .contentGrid2 {
+        width: 90%;
+        margin-left: 5%;
+        grid-template-columns: 100%;
+        /* Set the grid to have a single column */
+        grid-template-rows: auto;
+        /* Let rows adjust dynamically based on content */
+    }
+
+    /* Center align items in the right column of contentGrid2 */
+    .grid2Item {
+        justify-content: center;
+    }
+
+    /* Adjust image size in contentGrid2 */
+    .grid2Item img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    /* Adjust overall height for mobile layout */
+    #grids {
+        height: auto;
+    }
+}
+
+.hideBtn {
+    opacity: 0;
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        color: #000;
+        filter: blur(0px)
+    }
+
+    80% {
+        opacity: 0;
+        color: #000;
+        filter: blur(0px)
+    }
+
+    81% {
+        opacity: 90%;
+        color: #16FF00;
+        filter: blur(15px);
+    }
+
+    90% {
+        color: #16FF00;
+    }
+
+    100% {
+        opacity: 1;
+        color: #000;
+    }
+}
 
 
 /* @keyframes flashAnimation {
@@ -46,6 +132,68 @@
     }
 } */
 
+.navbar {
+    background-color: #929292;
+    overflow: hidden;
+    z-index: 9999;
+    position: sticky;
+    height: 5vh;
+    opacity: 70%;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-bottom: 0;
+}
+
+.navbar > * {
+    pointer-events: all;
+}
+
+#logoMain {
+    position: absolute;
+    margin-left: 36%;
+    margin-top: 30vh;
+    pointer-events: none;
+    width: 27%;
+    z-index: 9999;
+}
+
+h2 {
+    font-family: 'Silkscreen';
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    z-index: 9999;
+}
+
+.navbar a:hover {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    filter: invert(100%);
+}
+
+#content {
+    transition: filter 0.3s ease-in-out;
+    top: 0;
+}
+
+/* .navbar:hover~#content {
+    filter: blur(3px);
+
+} */
+
+
+#atomLogoNav {
+    width: 45px;
+    filter: invert(100%);
+}
 
 .flash-text {
     animation: flashAnimation 1s linear;
@@ -72,10 +220,52 @@ body {
     padding: 10px;
     /* Adjust padding as needed */
     position: fixed;
-    top: 0;
+    top: 91vh;
     left: 0;
     z-index: 999;
     /* Ensure it's above other content */
+}
+
+#stop {
+    margin: 10px;
+    /* Adjust margins as needed */
+    padding: 10px;
+    /* Adjust padding as needed */
+    position: fixed;
+    top: 91vh;
+    left: 3.2vw;
+    z-index: 999;
+    /* Ensure it's above other content */
+}
+
+#playPause, #stop {
+    scale: auto;
+    display: flex;
+    width: 3vw;
+    height: 3vw;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+#playPause>img, #stop>img {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+#audioControls {
+    position: fixed;
+    top: 80vh;
+    left: 0;
+    z-index: 999;
+}
+
+#audioControls button {
+    margin: 10px;
+    padding: 10px;
+    transform: scale(1);
+    /* Uniformly resize the buttons */
 }
 
 #overlay {
@@ -128,9 +318,12 @@ canvas {
     height: 100vh;
 }
 
+
+
 #index {
     overflow: hidden;
     /* Set overflow to hidden by default */
+    margin-top: -4vh;
 }
 
 #work1png {
@@ -150,8 +343,26 @@ h3 {
     white-space: nowrap;
 }
 
+#itemsContainer {
+    display: flex;
+}
+
+#menuDiv {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 63.5%;
+    margin-top: 28vh;
+}
+
+.menuItem {
+    font-size: 2.8vw;
+    font-weight: 50;
+    margin-bottom: -9%;
+}
+
 #workMenuDiv {
-    display: inline-flex;
+    display: none;
     flex-direction: column;
     position: absolute;
     margin-left: 20vw;
@@ -171,12 +382,14 @@ h3 {
 
 .titleBarAlign {
     margin: 0;
+    top: 0;
     margin-top: 4vh;
     padding: 0;
     width: 100vw;
     height: auto;
     display: flex;
     flex-direction: row;
+    position: absolute;
 }
 
 a {
@@ -219,6 +432,7 @@ a {
 
 #actionTitle {
     margin-left: 6vw;
+    margin-top: 13vh;
     font-size: 1.8vw;
     letter-spacing: 0.3vw;
 }
@@ -228,13 +442,18 @@ a {
     color: #16FF00;
 }
 
+.textBtn:active,
+.menuAnch:active {
+    color: #ff64f2;
+}
+
 .menuAnch {
     margin: 0;
     width: 0;
 }
 
 #alphabetaTitle {
-    width: 80vw;
+    width: 78vw;
     z-index: 0;
     position: absolute;
 }
@@ -270,7 +489,7 @@ a {
     margin-top: 30vh;
     margin-right: 10vw;
     margin-left: 54vw;
-    height: 123vh;
+    height: min-content;
 }
 
 #contentContainer>iframe {
@@ -279,9 +498,13 @@ a {
     /* Assuming 4:3 aspect ratio, 0.75 is the aspect ratio */
 }
 
+#contentContainer > .alphaFrame {
+    padding-bottom: 0%;
+    height: 40vh;
+}
+
 #contentContainer > * {
     margin-bottom: 3vh;
-    height: 100vh;
 }
 
 #titleElement {
@@ -309,7 +532,7 @@ a {
     position: absolute;
     display: inline-flex;
     align-items: center;
-    top: 5vh;
+    top: -1vh;
     left: 8vw;
     /* Stick to the top of the viewport */
     z-index: 1;
@@ -322,11 +545,13 @@ a {
 
 #splatWidget {
     position: absolute;
+    margin: 0;
+    padding: 0;
     width: 17vw;
     /* Adjust the width as needed */
     height: auto;
     /* Maintain aspect ratio */
-    top: -15vh;
+    top: -5vh;
     /* Adjust vertical position as needed */
     left: -20px;
     /* Adjust horizontal position as needed */
@@ -347,7 +572,7 @@ a {
 #ichbinImg {
     width: 25vw;
     position: absolute;
-    top: -130%;
+    top: -17vh;
     /* Stick to the top of the #titleElement */
     left: 7vw;
     /* Adjust this value as needed */
@@ -358,7 +583,7 @@ a {
 }
 
 #titleElement > h3 {
-    position: sticky;
+    position: absolute;
     pointer-events: none;
     backdrop-filter: drop-shadow(0 0 100px rgba(255, 255, 255, 1));
 }
@@ -372,7 +597,7 @@ a {
     display: grid;
     width: 85vw;
     margin-left: 8vw;
-    margin-top: 10vh;
+    margin-top: 29vh;
     grid-template-columns: repeat(3, 1fr);
     /* Three columns with equal width */
     grid-auto-rows: auto;
@@ -437,6 +662,8 @@ a {
     letter-spacing: 0.1vw;
     color: #16FF00;
     font-size: 4.5vw;
+    margin-top: 8vh;
+    position: sticky;
 }
 
 #contentArea {
@@ -444,12 +671,17 @@ a {
     width: 100vw;
     justify-content: center;
     align-content: center;
+    position: absolute;
 }
 
 .subTitle {
     position: absolute;
-    margin-top: 4vh;
+    margin-top: 7vh;
     margin-left: 2vw;
+}
+
+#titleElement3 {
+    margin-top: 3vh;
 }
 
 .subTitle > img {
@@ -487,21 +719,23 @@ a {
     width: 90vw;
     margin-left: 3.3vw;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 155vh;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 1fr 1fr 1fr;
     /* Let rows adjust dynamically based on content */
     gap: 20px;
+    position: absolute;
 }
 
 .contentGrid3 {
     width: 100vw;
+    position: absolute;
     /* Set a fixed width for the grid */
     margin-left: 12vw;
     margin-right: auto;
     /* Center the grid on the page */
-    margin-top: 10vh;
+    margin-top: 350vh;
     margin-bottom: -300px;
     display: grid;
     grid-template-columns: 30% 70%;
@@ -577,7 +811,8 @@ a {
 #grids {
     display: flex;
     flex-direction: column;
-    height: 200vh;
-    width: 100vw;
+    height: 250vh;
+    width: 100%;
     justify-content: space-between;
+    align-content: space-between;
 }
