@@ -34,7 +34,7 @@ function loadScript() {
         } else {
             console.error('Element with ID "splatWidget" not found.');
         }
-    }, 500);}
+    }, 700);}
 
     document.addEventListener("DOMContentLoaded", function () {
         // Initially hide the content div
