@@ -155,6 +155,12 @@
                     audio.play();
                 }
 
+                function playClick2Sound() {
+                const audio = new Audio('click-21156.mp3');
+                audio.volume = 0.4;
+                audio.play();
+            }
+
                 // Get all menuAnch elements within workMenuDiv
                 const menuAnchElements = document.querySelectorAll('#workMenuDiv .menuAnch');
 
@@ -162,6 +168,12 @@
                 menuAnchElements.forEach(menuAnch => {
                     menuAnch.addEventListener('click', playClickSound);
                 });
+
+                menuAnchElements.forEach(menuAnch => {
+                    menuAnch.addEventListener('mouseover', playClick2Sound);
+                });
+
+                
             });
 
     </script>
