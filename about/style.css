@@ -91,10 +91,26 @@ h3 {
 }
 
 .navbar {
-    background-color: #333;
+    background-color: #929292;
     overflow: hidden;
     z-index: 9999;
     position: sticky;
+    height: 5vh;
+    opacity: 100%;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-bottom: 0;
+}
+
+.navbar>* {
+    pointer-events: all;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
 .navbar a {
@@ -107,7 +123,7 @@ h3 {
     z-index: 9999;
 }
 
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
+#atomLogoNav {
+    width: 45px;
+    filter: invert(100%);
 }

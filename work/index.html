@@ -16,7 +16,7 @@
     <div id="overlay"></div>
 
     <div class="navbar">
-        <a id="homeButton" href="../index.html">
+        <a id="homeButton" href="../work">
             <img src="../atom-logo.png" id="atomLogoNav" alt="">
         </a>
         <!-- <a href="../work/index.html">WORK</a>
@@ -35,7 +35,7 @@
                 <a id="work1Main" class="menuAnch" href="">
                     <h2 class="menuItem">Work</h2>
                 </a>
-                <a class="menuAnch" href="../about/about.html">
+                <a class="menuAnch" href="../about">
                     <h2 class="menuItem">About</h2>
                 </a>
                 <a class="menuAnch" href="../archive/">
@@ -146,6 +146,24 @@
 
         const stopButton = document.getElementById('stop');
         stopButton.addEventListener('click', stopAudio);
+
+        document.addEventListener("DOMContentLoaded", function () {
+                // Function to play the audio file
+                function playClickSound() {
+                    const audio = new Audio('CLICK 1.wav');
+                    audio.volume = 0.7;
+                    audio.play();
+                }
+
+                // Get all menuAnch elements within workMenuDiv
+                const menuAnchElements = document.querySelectorAll('#workMenuDiv .menuAnch');
+
+                // Add event listeners to each menuAnch element
+                menuAnchElements.forEach(menuAnch => {
+                    menuAnch.addEventListener('click', playClickSound);
+                });
+            });
+
     </script>
 
 </body>
