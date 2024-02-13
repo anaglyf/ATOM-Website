@@ -95,7 +95,7 @@ h3 {
     overflow: hidden;
     z-index: 9999;
     position: sticky;
-    height: 5vh;
+    height: 50px;
     opacity: 100%;
     pointer-events: none;
     margin: 0;
@@ -108,11 +108,6 @@ h3 {
     pointer-events: all;
 }
 
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
 .navbar a {
     float: left;
     display: block;
@@ -123,7 +118,66 @@ h3 {
     z-index: 9999;
 }
 
-#atomLogoNav {
-    width: 45px;
+.navbar a:hover {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
     filter: invert(100%);
+}
+
+#atomLogoNav {
+    width: 50px;
+    filter: invert(100%);
+}
+
+@media screen and (max-width: 1024px) {
+
+body {
+        height: 100vh;
+    }
+
+#mainBody {
+        text-align: center;
+        font-weight: 0;
+        font-size: 2.5vw;
+        letter-spacing: 0.15vw;
+        line-height: 1;
+    }
+
+#descContainer {
+    width: 70.7vw;
+    margin-left: 12vw;
+    margin-top: 7vh;
+    display: flex;
+    align-content: center;
+}
+
+#detailsFooter {
+    display: flex;
+    flex-direction: column;
+    margin-left: -1vw;
+    margin-top: 7vh;
+}
+
+
+#detailsFooter>a>h3 {
+    line-height: 2vh;
+        text-align: center;
+        margin: 0;
+        font-weight: 0;
+        font-size: 1.7vw;
+        letter-spacing: 0.15vw;
+}
+
+#detailsFooter>#atom {
+    width: 10.3vw;
+    margin-left: 44vw;
+    margin-top: 9vh;
+}
+
+.atomLogo {
+    width: 7.5vw;
+    margin-left: 45vw;
+    margin-bottom: 1vh;
+}
+
 }

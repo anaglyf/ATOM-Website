@@ -20,45 +20,6 @@
     letter-spacing: 0.13vw;
 }
 
-@media screen and (max-width: 768px) {
-    /* Adjust contentGrid1 for mobile */
-    .contentGrid1,
-    .contentGrid3 {
-        width: 90%;
-        margin-left: 5%;
-        grid-template-columns: 100%;
-        /* Set the grid to have a single column */
-        grid-template-rows: auto;
-        /* Let rows adjust dynamically based on content */
-    }
-
-    /* Adjust contentGrid2 for mobile */
-    .contentGrid2 {
-        width: 90%;
-        margin-left: 5%;
-        grid-template-columns: 100%;
-        /* Set the grid to have a single column */
-        grid-template-rows: auto;
-        /* Let rows adjust dynamically based on content */
-    }
-
-    /* Center align items in the right column of contentGrid2 */
-    .grid2Item {
-        justify-content: center;
-    }
-
-    /* Adjust image size in contentGrid2 */
-    .grid2Item img {
-        max-width: 90%;
-        max-height: 90%;
-    }
-
-    /* Adjust overall height for mobile layout */
-    #grids {
-        height: auto;
-    }
-}
-
 .hideBtn {
     opacity: 0;
 }
@@ -69,7 +30,17 @@
     }
 
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-500%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
     }
 }
 
@@ -137,7 +108,7 @@
     overflow: hidden;
     z-index: 9999;
     position: sticky;
-    height: 5vh;
+    height: 50px;
     opacity: 100%;
     pointer-events: none;
     margin: 0;
@@ -194,10 +165,67 @@ h2 {
 
 } */
 
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 
 #atomLogoNav {
-    width: 45px;
+    width: 50px;
     filter: invert(100%);
+}
+
+.galleryContainer {
+    margin-top: 22vh;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.galleryContainer img {
+    width: 10vw;
 }
 
 .flash-text {
@@ -263,6 +291,7 @@ body {
     flex-wrap: wrap;
     left: 0;
     z-index: 999;
+    display: none;
 }
 
 .audioControls button {
@@ -321,10 +350,17 @@ canvas {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    overflow: hidden;
 }
 
-
+.colour {
+    width: 100vw;
+    height: 145vh;
+    position: absolute;
+    overflow: hidden;
+    background-color: #EAEAEA;
+    z-index: -9999;
+}
 
 #index {
     overflow: hidden;
@@ -389,13 +425,12 @@ h3 {
 .titleBarAlign {
     margin: 0;
     top: 0;
-    margin-top: 4vh;
     padding: 0;
     width: 100vw;
     height: auto;
     display: flex;
     flex-direction: row;
-    position: absolute;
+    overflow: hidden;
 }
 
 a {
@@ -404,13 +439,16 @@ a {
     display: inline-block;
 }
 
+#backButton1 {
+    margin-top: 11%;
+}
+
 #nextButton1, #backButton1 {
-    margin: 0;
     padding: 0;
     height: 0;
     width: 0;
     /* display: inline;*/
-    position: absolute;
+    /* position: absolute; */
     /* margin-left: 72vw;
     margin-top: 7.6vh;
     width: 25vw;
@@ -423,12 +461,12 @@ a {
 
 #nextButton2Div, #nextButton3Div {
     margin-left: 30vw;
-    position: absolute;
     display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0;
-    width: max-content;
-    height: max-content;
+    width: 30vw;
+    height: 8vh;
 }
 
 #nextButton2 > h3,
@@ -437,10 +475,10 @@ a {
 }
 
 #actionTitle {
-    margin-left: 6vw;
-    margin-top: 13vh;
-    font-size: 1.8vw;
-    letter-spacing: 0.3vw;
+    margin-left: 10px;
+    margin-top: 0vh;
+    width: 60vw;
+    pointer-events: none;
 }
 
 
@@ -459,7 +497,7 @@ a {
 }
 
 #alphabetaTitle {
-    width: 78vw;
+    width: 66vw;
     z-index: 0;
     position: absolute;
 }
@@ -468,21 +506,31 @@ a {
     display: none;
 }
 
-#backButton1 {
-    margin-top: 6.2vh;
+
+.nextBack {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 27vw;
+    z-index: 999;
+    height: 20vh;
+    margin-left: 70vw;
+    overflow: hidden;
 }
 
 #backButton1>h3 {
-    font-size: 0.8vw;
+    font-size: 0.8dvw;
     letter-spacing: 0.1vw;
-    margin-left: 73vw;
 }
 
 
 #nextButton1 > h3 {
-    font-size: 1.7vw;
+    font-size: 1.7dvw;
     letter-spacing: 0.1vw;
-    margin-left: 75vw;
+}
+
+#nextButton1 {
+    margin-top: -5px;
 }
 
 #contentContainer {
@@ -492,7 +540,6 @@ a {
     z-index: 999;
     margin: 0;
     padding: 0;
-    margin-top: 30vh;
     margin-right: 10vw;
     margin-left: 54vw;
     height: min-content;
@@ -516,7 +563,6 @@ a {
 #titleElement {
     position: sticky;
     display: inline-flex;
-    align-items: center;
     top: 0;
     /* Stick to the top of the viewport */
     z-index: 1;
@@ -524,10 +570,6 @@ a {
 }
 
 #titleElement2 {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    top: -7vh;
     left: 3cap;
     /* Stick to the top of the viewport */
     z-index: 1;
@@ -538,8 +580,9 @@ a {
     position: absolute;
     display: inline-flex;
     align-items: center;
-    top: -1vh;
+    top: 5vh;
     left: 8vw;
+    pointer-events: none;
     /* Stick to the top of the viewport */
     z-index: 1;
     /* Ensure it's above other content */
@@ -557,9 +600,7 @@ a {
     /* Adjust the width as needed */
     height: auto;
     /* Maintain aspect ratio */
-    top: -5vh;
     /* Adjust vertical position as needed */
-    left: -20px;
     /* Adjust horizontal position as needed */
     z-index: -1;
     /* Ensure it's above other content */
@@ -603,7 +644,7 @@ a {
     display: grid;
     width: 85vw;
     margin-left: 8vw;
-    margin-top: 29vh;
+    margin-top: -19vh;
     grid-template-columns: repeat(3, 1fr);
     /* Three columns with equal width */
     grid-auto-rows: auto;
@@ -651,11 +692,12 @@ a {
 
 #ferroPlayerDiv {
     position: absolute;
-    margin-left: 23.4vw;
+    width: 100%;
+    margin-left: 10%;
 }
 
 #ytplayer2 {
-    width: 262%;
+    width: 41%;
 }
 
 .noItalic {
@@ -668,7 +710,7 @@ a {
     letter-spacing: 0.1vw;
     color: #16FF00;
     font-size: 4.5vw;
-    margin-top: 8vh;
+    margin: 0;
     position: sticky;
 }
 
@@ -678,6 +720,11 @@ a {
     justify-content: center;
     align-content: center;
     position: absolute;
+    
+}
+
+.fabText {
+    font-size: 5vw;
 }
 
 .subTitle {
@@ -699,6 +746,7 @@ a {
     flex-direction: column;
     position: absolute;
     margin-top: -15%;
+    z-index: 0;
 }
 
 .textImgItem > img {
@@ -706,17 +754,15 @@ a {
 }
 
 .contentGrid1 {
-    width: 100vw;
     /* Set a fixed width for the grid */
     margin-left: 9.3vw;
     margin-right: auto;
     /* Center the grid on the page */
-    margin-top: 30vh;
-    margin-bottom: -300px;
+    margin-bottom: -400px;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 100% 0%;
     /* Adjusted column widths */
-    grid-template-rows: 40% 60%;
+    grid-template-rows: 60% 40%;
     /* Adjusted row heights */
     gap: 20px;
 }
@@ -751,9 +797,6 @@ a {
     gap: 20px;
 }
 
-.contentGrid1>*, .contentGrid2>*, .contentGrid3>* {
-    width: 100%;
-}
 
 .grid1Item > p {
     margin-top: 0vh;
@@ -816,9 +859,250 @@ a {
 
 #grids {
     display: flex;
-    flex-direction: column;
-    height: 250vh;
     width: 100%;
+    margin-top: 27vh;
     justify-content: space-between;
     align-content: space-between;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    #itemsContainer {
+            display: flex;
+        }
+                #logoMain {
+                    position: absolute;
+                    margin-left: 16%;
+                    margin-top: 33vh;
+                    pointer-events: none;
+                    width: 49%;
+                    z-index: 9999;
+                }
+
+        #menuDiv {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            margin-left: 63.5%;
+            margin-top: 32vh;
+        }
+    
+        .menuItem {
+            font-size: 4.8vw;
+            font-weight: 50;
+            margin-bottom: -9%;
+        }
+    
+        #workMenuDiv {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            margin-left: 20vw;
+            margin-top: 35vh;
+            z-index: 1;
+            /* Adjust width to fit content */
+            width: auto;
+        }
+    
+        .workItem {
+            margin: 0;
+            margin-bottom: 1%;
+            letter-spacing: 0.2vw;
+            /* Adjust width to fit content */
+            width: auto;
+        }
+
+    #actionContentGrid {
+            display: grid;
+            width: 40vw;
+            margin-left: 10vw;
+            margin-top: -16vh;
+            grid-template-columns: repeat(3, 0.5fr);
+            /* Three columns with equal width */
+            grid-auto-rows: auto;
+            /* Automatically adjust row height based on content */
+            grid-gap: 0px;
+            /* Gap between grid items */
+            z-index: 99;
+            justify-items: center;
+            align-items: center;
+        }
+
+        #actionContentGrid>p {
+            grid-column: span 3;
+            grid-row: span 2;
+            grid-row-start: 1;
+            /* Span two columns */
+            font-size: 2vw;
+            margin: 0;
+            width: 80vw;
+            padding-bottom: 1vh;
+            place-self: start;
+        }
+
+        #actionContentGrid>span {
+            height: auto;
+            grid-row: 2;
+            grid-row-start: 2;
+            /* Span two rows */
+            align-self: center;
+            justify-self: center;
+            place-self: stretch;
+            grid-gap: 0;
+        }
+
+        #actionContentGrid>span>#cutspec {
+            width: 15vw;
+            object-fit: cover;
+            object-position: 20% 100%;
+            /* Set the width to 15% of the viewport width */
+            margin-left: 0vw;
+        }
+
+        #actionContentGrid>#cutspan {
+            grid-row-start: 2;
+        }
+        
+        #actionContentGrid>#playerDiv {
+            grid-row-start: 3;
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        #ferroPlayerDiv {
+            position: absolute;
+            margin-left: 10vw;
+            width: 78%;
+        }
+
+        #playerDiv {
+            height: 200vh;
+        }
+
+
+        #ytplayer2 {
+            width: 100%;
+            max-height: 35vh;
+        }
+
+        #ytplayer {
+            width: 90%;
+            height: 35vh;
+        }
+
+        
+
+    .transparentTitle {
+        letter-spacing: 0.1vw;
+        color: #16FF00;
+        font-size: 5.7vw;
+        position: sticky;
+        margin-top: 0.6vh;
+        margin-left: 0.9vw;
+    }
+
+    /* Adjust contentGrid1 for mobile */
+    .contentGrid1,
+    .contentGrid3 {
+        margin-left: 5%;
+        grid-template-columns: 100%;
+        /* Set the grid to have a single column */
+        grid-template-rows: auto;
+        /* Let rows adjust dynamically based on content */
+    }
+
+    /* Adjust contentGrid2 for mobile */
+    .contentGrid2 {
+        width: 90%;
+        margin-left: 5%;
+        grid-template-columns: 100%;
+        /* Set the grid to have a single column */
+        grid-template-rows: auto;
+        /* Let rows adjust dynamically based on content */
+    }
+
+    /* Center align items in the right column of contentGrid2 */
+    .grid2Item {
+        justify-content: center;
+    }
+
+    /* Adjust image size in contentGrid2 */
+    .grid2Item img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    /* Adjust overall height for mobile layout */
+    #grids {
+        height: auto;
+        margin-top: 15vh;
+        width: 80%;
+        margin-left: 8vw;
+    }
+
+    .contentContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .grid1Item>p {
+            margin-top: 0vh;
+            font-size: 1.1vw;
+        }
+
+    #textImgContainer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        margin-top: -60px;
+        z-index: -999;
+    }
+
+    .textImgItem > img{
+        width: 80vw;
+    }
+
+    #alphabetaTitle {
+        width: 115vw;
+        display: block;
+        position: relative;
+    }
+
+    .alphaContainer {
+        height: min-content;
+    }
+
+    .bodyText, .fabText {
+        font-size: 2.3vw;
+    }
+
+    .alphaBody {
+        margin-top: -2vh;
+    }
+
+    #contentContainer {
+        margin-left: 6vw;
+        margin-right: 6vw;
+    }
+
+    .titleBarAlign {
+        margin-top: 0vh;
+        top: 6vh;
+        left: -4vw;
+    }
+
+    #actionTitle {
+        margin-left: 10px;
+        margin-top: 0vh;
+        width: 100vw;
+        pointer-events: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .grid1Item>p {
+        margin-top: 0vh;
+        font-size: 1.5vw;
+    }
 }

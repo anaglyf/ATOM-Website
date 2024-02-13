@@ -12,6 +12,21 @@ function patchFinishedLoading(patch) {
 }
 
 function loadScript() {
+    document.addEventListener("CABLES.jsLoaded", function (event) {
+        CABLES.patch = new CABLES.Patch({
+            patch: CABLES.exportedPatch,
+            "prefixAssetPath": "",
+            "assetPath": "",
+            "jsPath": "",
+            "glCanvasId": "glcanvas",
+            "glCanvasResizeToWindow": true,
+            "onError": showError,
+            "onPatchLoaded": patchInitialized,
+            "onFinishedLoading": patchFinishedLoading,
+            "canvas": { "alpha": true, "premultipliedAlpha": true } // make canvas transparent
+        });
+    });
+
     function loadWidget() {
     setTimeout(() => {
         const splatWidget = document.getElementById('splatWidget');
@@ -44,32 +59,20 @@ function loadScript() {
 
 
 
-
-    document.addEventListener("CABLES.jsLoaded", function (event) {
-        CABLES.patch = new CABLES.Patch({
-            patch: CABLES.exportedPatch,
-            "prefixAssetPath": "",
-            "assetPath": "",
-            "jsPath": "",
-            "glCanvasId": "glcanvas",
-            "glCanvasResizeToWindow": true,
-            "onError": showError,
-            "onPatchLoaded": patchInitialized,
-            "onFinishedLoading": patchFinishedLoading,
-            "canvas": { "alpha": true, "premultipliedAlpha": true } // make canvas transparent
-        });
-    });
-
     document.addEventListener("DOMContentLoaded", function () {
         const work1 = document.getElementById("work1Main");
         const itemsContainer = document.querySelector(".itemsContainer");
         const workMenuDiv = document.getElementById("workMenuDiv");
+        const logoMain = document.querySelector('#logoMain');
+        const startMenu = document.querySelector('#menuDiv');
 
         work1.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent the default behavior of the anchor tag
 
             // Animate the itemsContainer to swipe left and off the screen quickly
-            itemsContainer.style.animation = "swipeLeft 0.5s forwards";
+            logoMain.style.animation = "swipeLeft 1s forwards";
+            startMenu.style.animation = "fadeOut 0.5s forwards";
+            startMenu.style.display = "None"
 
             setTimeout(() => {
                 // Animate each workItem to go from fully transparent to fully opaque sequentially
@@ -141,7 +144,7 @@ function loadScript() {
             toggleOverlay(true);
 
             setTimeout(function () {
-                fetch(page + '.html')
+                fetch('work/' + page + '.html')
                     .then(response => response.text())
                     .then(html => {
                         contentDiv.style.display = 'block';
@@ -179,7 +182,7 @@ function loadScript() {
             const nextPageIndex = currentPageIndex + 1;
 
             setTimeout(function () {
-                fetch('work' + nextPageIndex + '.html')
+                fetch('work/work' + nextPageIndex + '.html')
                     .then(response => {
                         // if (!response.ok) {
                         //     // If the next page is not found, default back to work1
